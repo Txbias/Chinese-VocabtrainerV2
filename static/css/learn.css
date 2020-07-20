@@ -1,0 +1,75 @@
+html, body {
+  background-color: #eee;
+}
+
+.center {
+  text-align: center;
+}
+
+.headline {
+  font-family: Georgia, Times, serif;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+h4 {
+  padding-top: 7px;
+  font-family: "Franklin Gothic Medium", "Franklin Gothic", serif;
+}
+
+hr {
+  width: 35%;
+}
+
+.progress {
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+#pinyin {
+  width: 25%;
+  font-size: 20px;
+}
+
+.btn {
+  font-family: Ubuntu, serif;
+  font-size: 17px;
+}
+
+#count {
+  font-family: Consolas, monaco, monospace;
+}
+
+@media only screen and (min-width: 1500px)  {
+  #pinyin {
+    width: 20%;
+  }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1499px) {
+  #pinyin {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .progress {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  #pinyin {
+    width: 45%;
+  }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 1200px) {
+  hr {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 649px) {
+  hr {
+    width: 92%;
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/learn.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/characters.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Chewy" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+
+    <title>Lernen</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename='js/learnManager.js')}}"></script>
+  </head>
+  <body onload="loadLesson({{data}});">
+    <div class="center">
+        <div class="row">
+          <div class="col">
+            <h4 id="german"></h4>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col">
+            <p class="headline">Pinyin:</p>
+            <input type="text" id="pinyin" name="pinyin" placeholder="z.B.: wo3" autocomplete="off" autocapitalize="off" spellcheck="false">
+          </div>
+        </div>
+        <br>
+        <p class="headline">Zeichen:</p>
+        <div class="row" id="character_container">
+            <button type="button" class="btn btn-outline-dark btn-lg character_button" id="cb_0" onclick="handleCharacterSelection(0);">我</button>
+            <button type="button" class="btn btn-outline-dark btn-lg character_button" id="cb_1" onclick="handleCharacterSelection(1);">騎​自行車</button>
+            <button type="button" class="btn btn-outline-dark btn-lg character_button" id="cb_2" onclick="handleCharacterSelection(2);">我</button>
+            <button type="button" class="btn btn-outline-dark btn-lg character_button" id="cb_3" onclick="handleCharacterSelection(3);">我</button>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col">
+            <p id ="count" style="margin-top: 3px;"></p>
+            <div class="progress">
+              <div id="count_progress" class="progress-bar active bg-success" role="progressbar" aria-valuemin="0"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <img id="image">
+          </div>
+        </div>
+    </div>
+
+  </body>
+</html>

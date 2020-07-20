@@ -1,0 +1,10 @@
+#character_container {
+    text-align: center;
+    position: center;
+    display: block;
+}
+
+.character_button {
+    text-align: center;
+    position: center;
+}
