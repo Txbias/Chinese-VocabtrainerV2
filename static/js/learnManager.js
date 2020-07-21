@@ -1,4 +1,4 @@
-let current_Vocab;
+let currentVocab;
 let currentIndex = 0;
 let vocabsArray;
 
@@ -24,7 +24,7 @@ function displayVocab(vocab) {
 
     console.log(vocab);
 
-    current_Vocab = vocab;
+    currentVocab = vocab;
     resetButtons();
 
     //Insert german text
@@ -68,10 +68,20 @@ function handleCharacterSelection(index) {
 
     const clickedButton = document.getElementById(id);
 
-    // TODO: Check pinyin input
+    let pinyinField = document.getElementById("pinyin");
 
-    if(clickedButton.innerText === current_Vocab[1]) {
+    if(pinyinField.value !== currentVocab[2]) {
+        pinyinField.setAttribute("style", "border: solid 1px red;");
+        return;
+    } else {
+        pinyinField.setAttribute("style", "border: solid 1px c3c3c3;");
+    }
+
+    if(clickedButton.innerText === currentVocab[1]) {
         // Clicked button was correct
+
+        // Remove content of pinyin field
+        pinyinField.value = "";
 
         updateProgressBar();
         if(currentIndex < vocabsArray.length) {
