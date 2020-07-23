@@ -1,7 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from database.database_manager import init_db
 from database import vocab
+from database.vocab import Vocabulary
 import settings
+import urllib.parse
 
 app = Flask(__name__)
 
@@ -21,11 +23,28 @@ def main() -> None:
     app.run()
 
 
-@app.route("/")
+@app.route('/')
 def learn_route():
     vocabs = vocab.get_all()
     return render_template('learn.html', data=vocabs)
 
 
-if __name__ == "__main__":
+@app.route('/addVocab', methods=['POST'])
+def add_vocab():
+    if request.method != 'POST':
+        return ''
+
+    data = urllib.parse.unquote(request.data.decode('utf-8')).split('&')
+    data = [d.split('=')[1] for d in data]
+
+    voc = Vocabulary()
+    voc.pinyin = data[0]
+    voc.german = data[1]
+    voc.character = data[2]
+    vocab.add(voc)
+
+    return ''
+
+
+if __name__ == '__main__':
     main()
