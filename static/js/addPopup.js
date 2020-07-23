@@ -41,7 +41,6 @@ function addVocab() {
         chineseInput.classList.remove("modal-input-red");
     }
 
-    //TODO: send data to server
     $.ajax({
         type: "POST",
         url: "addVocab",
