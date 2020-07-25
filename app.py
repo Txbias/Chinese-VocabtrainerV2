@@ -1,6 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask
 from database.database_manager import init_db
-from database import vocab
+from endpoints.add_vocab import add_vocab_blueprint
+from endpoints.root import root_blueprint
 import settings
 
 app = Flask(__name__)
@@ -13,6 +14,8 @@ def configure_app(flask_app: Flask) -> None:
 
 def init_app(flask_app: Flask) -> None:
     configure_app(flask_app)
+    flask_app.register_blueprint(add_vocab_blueprint)
+    flask_app.register_blueprint(root_blueprint)
     init_db()
 
 
@@ -21,11 +24,5 @@ def main() -> None:
     app.run()
 
 
-@app.route("/")
-def learn_route():
-    vocabs = vocab.get_all()
-    return render_template('learn.html', data=vocabs)
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
