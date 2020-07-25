@@ -1,0 +1,48 @@
+.login-title {
+    display: block;
+    margin: 10% auto 4%;
+}
+
+.login-form {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 20%;
+    padding-left: 20%;
+    align-content: center;
+}
+
+.login-form .input-group {
+    padding-bottom: 15px;
+}
+
+.login-form a {
+    color: dodgerblue;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 20%;
+}
+
+.login-form a:hover {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+.submit-button-div {
+    padding-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 901px) {
+    .login-form {
+        padding-right: 10%;
+        padding-left: 10%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .login-form {
+        padding-right: 2%;
+        padding-left: 2%;
+    }
+}
