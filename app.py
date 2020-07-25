@@ -4,6 +4,7 @@ from endpoints.add_vocab import add_vocab_blueprint
 from endpoints.learn import learn_blueprint
 from endpoints.login import login_blueprint
 from endpoints.register import register_blueprint
+from endpoints.root import root_blueprint
 import settings
 
 app = Flask(__name__)
@@ -20,6 +21,7 @@ def init_app(flask_app: Flask) -> None:
     flask_app.register_blueprint(learn_blueprint)
     flask_app.register_blueprint(login_blueprint)
     flask_app.register_blueprint(register_blueprint)
+    flask_app.register_blueprint(root_blueprint)
     init_db()
 
 
