@@ -6,4 +6,4 @@ root_blueprint = Blueprint('root_blueprint', __name__, template_folder='template
 @root_blueprint.route('/')
 def root():
     # TODO: Look for session cookies
-    return redirect(url_for('/login'))
+    return redirect(url_for('login_blueprint.login'))
