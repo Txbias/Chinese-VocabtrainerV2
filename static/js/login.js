@@ -24,6 +24,10 @@ function submitLoginData() {
            window.location.href = baseUrl + "/learn";
        } else {
          //TODO: Add message for the user
+           const alert = $("div.alert");
+           alert.text("Falsches Passwort!");
+           alert.removeClass("error-alert-invisible");
+           alert.addClass("error-alert-visible");
        }
     });
 }

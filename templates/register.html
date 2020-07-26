@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/alerts.css') }}">
 
     <title>Registrieren</title>
 
@@ -16,6 +17,9 @@
     <script src="{{ url_for('static', filename='js/register.js') }}"></script>
 </head>
 <body>
+    <div class="alert alert-danger error-alert error-alert-invisible" role="alert">
+
+    </div>
     <div class="login-form">
         <div class="row">
             <h3 class="login-title">Registrieren:</h3>
