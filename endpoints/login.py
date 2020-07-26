@@ -3,7 +3,7 @@ import urllib.parse
 
 from database import user
 
-login_blueprint = Blueprint('root_blueprint', __name__, template_folder='templates')
+login_blueprint = Blueprint('login_blueprint', __name__, template_folder='templates')
 
 
 @login_blueprint.route('/login', methods=['GET', 'POST'])
