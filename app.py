@@ -7,28 +7,29 @@ from endpoints.register import register_blueprint
 from endpoints.root import root_blueprint
 import settings
 
-app = Flask(__name__)
-
 
 def configure_app(flask_app: Flask) -> None:
     flask_app.debug = settings.FLASK_DEBUG
     flask_app.config['SERVER_NAME'] = settings.FLASK_SERVER_NAME
 
 
-def init_app(flask_app: Flask) -> None:
+def init_app() -> Flask:
+    flask_app = create_app()
+    init_db()
+    return flask_app
+
+
+def create_app() -> Flask:
+    flask_app = Flask(__name__)
     configure_app(flask_app)
     flask_app.register_blueprint(add_vocab_blueprint)
     flask_app.register_blueprint(learn_blueprint)
     flask_app.register_blueprint(login_blueprint)
     flask_app.register_blueprint(register_blueprint)
     flask_app.register_blueprint(root_blueprint)
-    init_db()
-
-
-def main() -> None:
-    init_app(app)
-    app.run()
+    return flask_app
 
 
 if __name__ == '__main__':
-    main()
+    app = init_app()
+    app.run()
