@@ -1,0 +1,21 @@
+.error-alert-invisible {
+    opacity: 0;
+}
+
+.error-alert-visible {
+    animation-duration: 1s;
+    animation-name: fade-error-alert-in;
+}
+
+.error-alert {
+    text-align: center;
+}
+
+@keyframes fade-error-alert-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100%;
+    }
+}

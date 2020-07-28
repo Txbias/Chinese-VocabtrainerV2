@@ -1,10 +1,9 @@
-from flask import Blueprint, render_template
-from database import vocab
+from flask import Blueprint, redirect, url_for
 
-root_blueprint = Blueprint('root', __name__, template_folder='templates')
+root_blueprint = Blueprint('root_blueprint', __name__, template_folder='templates')
 
 
 @root_blueprint.route('/')
-def site_root():
-    vocabs = vocab.get_all()
-    return render_template('learn.html', data=vocabs)
+def root():
+    # TODO: Look for session cookies
+    return redirect(url_for('login_blueprint.login'))
