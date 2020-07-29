@@ -17,17 +17,18 @@ function submitLoginData() {
         },
         contentType: "charset=utf-8"
     }).done(function(data) {
-       if(data === "true") {
+        let response = JSON.parse(data);
+
+        if(response.success === false) {
+            const alert = $("div.alert");
+            alert.text(response.error);
+            alert.removeClass("error-alert-invisible");
+            alert.addClass("error-alert-visible");
+        }  else {
            // Password is correct
            //TODO: Customize learning for each user
            const baseUrl = window.location.origin;
            window.location.href = baseUrl + "/learn";
-       } else {
-         //TODO: Add message for the user
-           const alert = $("div.alert");
-           alert.text("Falsches Passwort!");
-           alert.removeClass("error-alert-invisible");
-           alert.addClass("error-alert-visible");
-       }
+        }
     });
 }

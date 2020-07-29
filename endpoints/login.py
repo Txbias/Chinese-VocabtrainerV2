@@ -1,7 +1,9 @@
 from flask import Blueprint, render_template, request
 import urllib.parse
+import json
 
 from database import user
+from utils import Response
 
 login_blueprint = Blueprint('login_blueprint', __name__, template_folder='templates')
 
@@ -17,7 +19,13 @@ def login():
         username = data[0]
         password = data[1]
 
+        if len(username) == 0 or len(password) == 0:
+            response = Response(False, 'The username and the password can\'t be empty')
+            return json.dumps(response.__dict__)
+
         if user.valid_login(username, password):
-            return 'true'
+            response = Response(True)
+            return json.dumps(response.__dict__)
         else:
-            return 'false'
+            response = Response(False, 'Wrong password')
+            return json.dumps(response.__dict__)

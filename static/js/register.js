@@ -10,28 +10,11 @@ function redirectToLogin() {
  * Submits the data entered in the input-fields to the server
  */
 function submitRegisterData() {
-    //Query data from input fields
+    // Query data from input fields
 
     const username = $("input.username-field").val();
     const password = $("input.password-field").val();
     const passwordRepeat = $("input.password-repeat-field").val();
-
-    const alert = $("div.alert");
-    if(username.length === 0) {
-        alert.text("Der Benutzername darf nicht leer sein!");
-        displayAlert(alert);
-        return;
-    } else if(password.length === 0) {
-        alert.text("Das Passwort darf nicht leer sein!");
-        displayAlert(alert);
-        return;
-    }
-
-    if(password !== passwordRepeat) {
-        passwordsNotIdentical();
-        return;
-    }
-
 
     $.ajax({
         type: "POST",
@@ -43,25 +26,26 @@ function submitRegisterData() {
         },
         contentType: "charset=utf-8"
     }).done(function (data) {
-        if(data === "true") {
-            //Account created successfully
+        let response = JSON.parse(data);
 
-            redirectToLogin();
-        } else {
-            //Account already exists
-            alert.text("Es existiert bereits ein Nutzer mit diesem Namen");
+        if(response.success === false) {
+            // The user entered something invalid
+            const alert = $("div.alert");
+
+            alert.text(response.error);
             displayAlert(alert);
+
+        } else {
+            // Account created successfully
+            redirectToLogin()
         }
     });
 }
 
-function passwordsNotIdentical() {
-    const alert = $("div.alert");
-
-    alert.text("Beide Passwörter müssen übereinstimmen");
-    displayAlert(alert);
-}
-
+/**
+ * Adds and removes one class to the given object to make it visible
+ * @param alert
+ */
 function displayAlert(alert) {
     alert.removeClass("error-alert-invisible");
     alert.addClass("error-alert-visible");
